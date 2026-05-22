@@ -175,9 +175,8 @@ header.scrolled {
 }
 
 .logo {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 10px;
   font-family: 'Outfit', sans-serif;
   font-size: 1.6rem;
   font-weight: 800;
