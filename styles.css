@@ -179,6 +179,7 @@ html {
   scroll-behavior: smooth;
   color-scheme: dark;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 body {
@@ -1690,6 +1691,7 @@ textarea.form-control {
 @media (max-width: 1024px) {
   .hero {
     background-attachment: scroll; /* Fixes disappearing background image on iOS and mobile viewports */
+    background-position: right center; /* Shift background position to make the painter's hand & roller visible on mobile */
   }
 
   .process-grid,
@@ -1730,7 +1732,7 @@ textarea.form-control {
   .nav-menu {
     position: fixed;
     top: 0;
-    right: -100%;
+    right: 0;
     width: 280px;
     height: 100vh;
     background-color: var(--bg-secondary);
@@ -1742,10 +1744,11 @@ textarea.form-control {
     transition: var(--transition-smooth);
     padding: 40px;
     box-shadow: var(--shadow-lg);
+    transform: translateX(100%);
   }
   
   .nav-menu.open {
-    right: 0;
+    transform: translateX(0);
   }
   
   .hamburger.open span:nth-child(1) {
