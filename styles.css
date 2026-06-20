@@ -47,6 +47,110 @@
   --shadow-gold: 0 0 25px rgba(232, 160, 33, 0.3);
 }
 
+[data-theme="light"] {
+  --bg-primary: hsl(220, 20%, 96%);
+  --bg-secondary: hsl(0, 0%, 100%);
+  --bg-tertiary: hsl(220, 15%, 90%);
+  
+  --text-primary: hsl(222, 25%, 12%);
+  --text-secondary: hsl(222, 15%, 35%);
+  --text-muted: hsl(222, 10%, 55%);
+  
+  --glass-bg: rgba(255, 255, 255, 0.80);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-glow: rgba(232, 160, 33, 0.02);
+  
+  color-scheme: light;
+}
+
+[data-theme="light"] header {
+  background-color: rgba(245, 247, 250, 0.65);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .nav-link {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+[data-theme="light"] .nav-link:hover {
+  color: var(--accent-gold);
+}
+
+[data-theme="light"] .hero {
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.22) 30%, rgba(255, 255, 255, 0.15) 55%, rgba(255, 255, 255, 0) 72%, rgba(255, 255, 255, 0) 94%, var(--bg-primary) 100%), 
+                    url('assets/hero_bg.png');
+}
+
+[data-theme="light"] .badge {
+  background-color: var(--bg-secondary); /* solid white */
+  border-color: rgba(232, 160, 33, 0.45);
+  color: hsl(38, 90%, 28%); /* deep dark gold/amber */
+  box-shadow: var(--shadow-sm);
+}
+
+[data-theme="light"] .badge-dot {
+  background-color: hsl(38, 90%, 28%);
+}
+
+[data-theme="light"] .text-gold {
+  background: linear-gradient(135deg, hsl(38, 90%, 40%) 0%, hsl(38, 95%, 46%) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme="light"] .hero-subtitle {
+  color: var(--text-primary);
+  font-weight: 500; /* Bolder font for reading over detailed background image */
+}
+
+[data-theme="light"] .btn-outline {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-sm);
+}
+
+[data-theme="light"] .btn-outline:hover {
+  background-color: var(--bg-tertiary);
+  border-color: var(--accent-gold);
+}
+
+[data-theme="light"] .paint-splash {
+  background: radial-gradient(circle, rgba(232, 160, 33, 0.08) 0%, transparent 70%);
+}
+
+[data-theme="light"] .service-select-card:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="light"] .service-select-card.selected {
+  background-color: rgba(232, 160, 33, 0.1);
+  border-color: var(--accent-gold);
+}
+
+[data-theme="light"] .cta-banner {
+  background: linear-gradient(135deg, hsl(38, 25%, 96%) 0%, hsl(38, 15%, 92%) 100%);
+  border-color: rgba(232, 160, 33, 0.18);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] footer {
+  background-color: hsl(220, 15%, 91%);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .social-icon {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="light"] .footer-bottom {
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
 /* Modern Scrollbars */
 ::-webkit-scrollbar {
   width: 10px;
@@ -192,6 +296,7 @@ header.scrolled {
   align-items: center;
   gap: 36px;
   list-style: none;
+  margin-left: auto;
 }
 
 .nav-link {
@@ -285,6 +390,58 @@ header.scrolled {
   background: rgba(255, 255, 255, 0.05);
   border-color: var(--accent-gold);
   transform: translateY(-2px);
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  margin-left: 36px;
+}
+
+.theme-toggle {
+  background: transparent;
+  border: 1px solid var(--glass-border);
+  color: var(--text-primary);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-smooth);
+  margin-right: 16px;
+}
+
+header.scrolled .theme-toggle {
+  border-color: var(--glass-border);
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+  transform: scale(1.05);
+}
+
+[data-theme="light"] .theme-toggle:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.sun-icon {
+  display: none;
+}
+
+.moon-icon {
+  display: block;
+}
+
+[data-theme="light"] .sun-icon {
+  display: block;
+}
+
+[data-theme="light"] .moon-icon {
+  display: none;
 }
 
 .hamburger {
@@ -783,8 +940,8 @@ header.scrolled {
 /* Floating overlay stats card for visual premium factor */
 .floating-overlay-card {
   position: absolute;
-  bottom: -24px;
-  left: -24px;
+  bottom: 24px;
+  left: 24px;
   background: var(--glass-bg);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
@@ -1531,6 +1688,10 @@ textarea.form-control {
 */
 
 @media (max-width: 1024px) {
+  .hero {
+    background-attachment: scroll; /* Fixes disappearing background image on iOS and mobile viewports */
+  }
+
   .process-grid,
   .services-grid,
   .testimonials-grid,
@@ -1602,6 +1763,10 @@ textarea.form-control {
   .process-grid {
     grid-template-columns: 1fr;
     gap: 30px;
+  }
+  
+  .header-controls {
+    margin-left: 0;
   }
   
   .process {

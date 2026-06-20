@@ -397,4 +397,39 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+
+  /* 
+    =========================================
+    7. LIGHT/DARK THEME TOGGLE
+    =========================================
+  */
+  const themeToggles = document.querySelectorAll('.theme-toggle');
+  
+  // Check for saved theme preference or use system preference
+  const savedTheme = localStorage.getItem('theme');
+  const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+  
+  const setInitialTheme = () => {
+    if (savedTheme === 'light' || (!savedTheme && systemPrefersLight)) {
+      document.documentElement.setAttribute('data-theme', 'light');
+    } else {
+      document.documentElement.removeAttribute('data-theme'); // default is dark
+    }
+  };
+  
+  setInitialTheme();
+  
+  themeToggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      if (currentTheme === 'light') {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+      }
+    });
+  });
+
 });
